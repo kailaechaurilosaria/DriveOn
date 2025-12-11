@@ -1,0 +1,1792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P3-MB-BUYER – Media Buyer Lead | DriveOn Commerce SOP</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        :root {
+            --drive-cyan: #00C8C8;
+            --carbon-black: #1A1A1A;
+            --secondary-text: #555555;
+            --border-color: #E0E0E0;
+            --surface-light: #F8F8F8;
+            --surface-white: #FFFFFF;
+            --champagne: #F4E8D0;
+            --success-green: #28A745;
+            --warning-yellow: #FFC107;
+            --danger-red: #DC3545;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--carbon-black);
+            background: var(--surface-light);
+        }
+
+        /* Header */
+        header {
+            background: var(--carbon-black);
+            color: white;
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .header-title {
+            flex: 1;
+        }
+
+        .header-title h1 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .header-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .status-chip {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: var(--drive-cyan);
+            color: var(--carbon-black);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Navigation */
+        .nav-toggle {
+            display: none;
+            background: var(--drive-cyan);
+            color: var(--carbon-black);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        nav {
+            position: fixed;
+            left: 0;
+            top: 120px;
+            width: 280px;
+            height: calc(100vh - 120px);
+            background: var(--surface-white);
+            border-right: 1px solid var(--border-color);
+            overflow-y: auto;
+            padding: 2rem 1rem;
+            z-index: 90;
+        }
+
+        nav ul {
+            list-style: none;
+        }
+
+        nav li {
+            margin-bottom: 0.5rem;
+        }
+
+        nav a {
+            display: block;
+            padding: 0.6rem 1rem;
+            color: var(--carbon-black);
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            background: var(--surface-light);
+            padding-left: 1.5rem;
+        }
+
+        nav a.active {
+            background: var(--drive-cyan);
+            color: var(--carbon-black);
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        main {
+            margin-left: 280px;
+            padding: 2rem;
+            max-width: 1200px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--drive-cyan) 0%, #00A0A0 100%);
+            color: var(--carbon-black);
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 200, 200, 0.2);
+        }
+
+        .hero h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero-meta-item strong {
+            font-weight: 600;
+        }
+
+        .key-outcomes {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .outcome-chip {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .you-own h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .you-own ul {
+            list-style: none;
+        }
+
+        .you-own li {
+            padding: 0.4rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .you-own li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--carbon-black);
+            font-weight: bold;
+        }
+
+        /* Card Sections */
+        section {
+            background: var(--surface-white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--carbon-black);
+            border-bottom: 3px solid var(--drive-cyan);
+            padding-bottom: 0.5rem;
+        }
+
+        section h3 {
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--carbon-black);
+        }
+
+        section h4 {
+            font-size: 1rem;
+            margin-top: 1rem;
+            margin-bottom: 0.75rem;
+            color: var(--secondary-text);
+            font-weight: 600;
+        }
+
+        /* Callout Boxes */
+        .callout {
+            padding: 1.25rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 4px solid;
+        }
+
+        .callout-canon {
+            background: #E3F2FD;
+            border-color: #2196F3;
+        }
+
+        .callout-warning {
+            background: #FFF3CD;
+            border-color: var(--warning-yellow);
+        }
+
+        .callout-tip {
+            background: #D4EDDA;
+            border-color: var(--success-green);
+        }
+
+        .callout-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .callout ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Lists */
+        ul, ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background: var(--surface-light);
+            font-weight: 600;
+            color: var(--carbon-black);
+        }
+
+        tr:hover {
+            background: var(--surface-light);
+        }
+
+        /* Code Blocks */
+        code {
+            background: var(--surface-light);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        pre {
+            background: var(--carbon-black);
+            color: var(--drive-cyan);
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            color: inherit;
+        }
+
+        /* Checklists */
+        .checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .checklist li {
+            padding: 0.5rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .checklist li::before {
+            content: "☐";
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+            color: var(--drive-cyan);
+        }
+
+        /* Collapsible Sections */
+        details {
+            margin: 1.5rem 0;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 1rem 1.5rem;
+            background: var(--surface-light);
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary:hover {
+            background: #E8E8E8;
+        }
+
+        summary::after {
+            content: "▼";
+            font-size: 0.8rem;
+            transition: transform 0.3s;
+        }
+
+        details[open] summary::after {
+            transform: rotate(-180deg);
+        }
+
+        details .details-content {
+            padding: 1.5rem;
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 0.3rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+
+        .badge-primary {
+            background: var(--drive-cyan);
+            color: var(--carbon-black);
+        }
+
+        .badge-success {
+            background: var(--success-green);
+            color: white;
+        }
+
+        .badge-warning {
+            background: var(--warning-yellow);
+            color: var(--carbon-black);
+        }
+
+        .badge-danger {
+            background: var(--danger-red);
+            color: white;
+        }
+
+        /* Handoff Cards */
+        .handoff-card {
+            background: var(--surface-light);
+            border-left: 4px solid var(--drive-cyan);
+            padding: 1.25rem;
+            margin: 1rem 0;
+            border-radius: 6px;
+        }
+
+        .handoff-card h4 {
+            margin-top: 0;
+            color: var(--carbon-black);
+        }
+
+        .handoff-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin: 0.75rem 0;
+            flex-wrap: wrap;
+        }
+
+        .handoff-meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .handoff-meta-item strong {
+            font-size: 0.85rem;
+            color: var(--secondary-text);
+            margin-bottom: 0.25rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 0.5rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--drive-cyan);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 1.5rem;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -1.5rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--drive-cyan);
+            border: 3px solid var(--surface-white);
+            box-shadow: 0 0 0 3px var(--drive-cyan);
+        }
+
+        .timeline-time {
+            font-weight: 600;
+            color: var(--drive-cyan);
+            margin-bottom: 0.5rem;
+        }
+
+        /* KPI Strip */
+        .kpi-strip {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+        }
+
+        .kpi-item {
+            flex: 1;
+            min-width: 180px;
+            background: var(--surface-light);
+            padding: 1.25rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--drive-cyan);
+        }
+
+        .kpi-label {
+            font-size: 0.85rem;
+            color: var(--secondary-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .kpi-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--carbon-black);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            nav {
+                transform: translateX(-100%);
+                transition: transform 0.3s;
+            }
+
+            nav.active {
+                transform: translateX(0);
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            main {
+                margin-left: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+
+            .header-title h1 {
+                font-size: 1.25rem;
+            }
+
+            main {
+                padding: 1rem;
+            }
+
+            section {
+                padding: 1.5rem;
+            }
+
+            .hero {
+                padding: 1.5rem;
+            }
+
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Mermaid Diagrams */
+        .mermaid {
+            background: var(--surface-white);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        /* Print Styles */
+        @media print {
+            nav, .nav-toggle {
+                display: none;
+            }
+
+            main {
+                margin-left: 0;
+            }
+
+            section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="header-title">
+                <h1>P3-MB-BUYER – Media Buyer Lead</h1>
+                <div class="header-subtitle">Pod 3: Media & Store | DriveOn Commerce CaniCol v4.0</div>
+            </div>
+            <span class="status-chip">ACTIVE CANON</span>
+        </div>
+        <button class="nav-toggle" onclick="toggleNav()">☰ Contents</button>
+    </header>
+
+    <nav id="sideNav">
+        <ul>
+            <li><a href="#hero">Role Overview</a></li>
+            <li><a href="#purpose">Purpose & Context</a></li>
+            <li><a href="#canon">Canon Constraints</a></li>
+            <li><a href="#day-in-life">Day in the Life</a></li>
+            <li><a href="#workflows">Core Workflows</a></li>
+            <li><a href="#handoffs">Handoffs & Interfaces</a></li>
+            <li><a href="#kpis">KPIs & Quality Bar</a></li>
+            <li><a href="#ai-usage">AI Usage & Prompts</a></li>
+            <li><a href="#tools">Tools & Systems</a></li>
+            <li><a href="#escalation">Escalation & Decisions</a></li>
+            <li><a href="#onboarding">Onboarding Checklist</a></li>
+            <li><a href="#changelog">Change Log</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <div class="hero" id="hero">
+            <h2>Media Buyer Lead (P3-MB-BUYER)</h2>
+            <div class="hero-meta">
+                <div class="hero-meta-item">
+                    <strong>Pod:</strong> P3 – Media & Store
+                </div>
+                <div class="hero-meta-item">
+                    <strong>Role ID:</strong> P3-MB-BUYER-XX
+                </div>
+                <div class="hero-meta-item">
+                    <strong>FTE:</strong> 1.0
+                </div>
+                <div class="hero-meta-item">
+                    <strong>Cross-Pod:</strong> Yes
+                </div>
+            </div>
+
+            <div class="key-outcomes">
+                <h3 style="width: 100%; margin-bottom: 0.5rem;">Key Outcomes</h3>
+                <span class="outcome-chip">Execute P1/P2 tests within budget</span>
+                <span class="outcome-chip">Maintain 4-6% P2_PASS hit rate</span>
+                <span class="outcome-chip">Scale P3 winners profitably</span>
+                <span class="outcome-chip">Enforce kill discipline</span>
+                <span class="outcome-chip">Protect test bank economics</span>
+            </div>
+
+            <div class="you-own">
+                <h3>You Own</h3>
+                <ul>
+                    <li><strong>P1 Gate:</strong> Execute smoke tests ($40-$60/product), tag P1_PASS/P1_FAIL</li>
+                    <li><strong>P2 Gate:</strong> Confirmation tests (total $80-$100), tag P2_PASS/P2_FAIL</li>
+                    <li><strong>P3 Scaling:</strong> Budget deployment for P3_TEST, P3_WINNER, TIER_A_WINNER</li>
+                    <li><strong>Kill Discipline:</strong> 90%+ of P1/P2_FAIL products cut within 24-48h</li>
+                    <li><strong>Campaign Health:</strong> Daily monitoring, creative refresh, A/B testing</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Meta Block -->
+        <section id="meta">
+            <h2>📋 Meta Block</h2>
+            <table>
+                <tr>
+                    <th>Attribute</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td><strong>Role_ID</strong></td>
+                    <td>P3-MB-BUYER-XX</td>
+                </tr>
+                <tr>
+                    <td><strong>Role_Name</strong></td>
+                    <td>Media Buyer Lead</td>
+                </tr>
+                <tr>
+                    <td><strong>Pod</strong></td>
+                    <td>P3 – Media & Store</td>
+                </tr>
+                <tr>
+                    <td><strong>Pipeline_Stages</strong></td>
+                    <td>P1 (Smoke Test), P2 (Confirmation), P3 (Scaling)</td>
+                </tr>
+                <tr>
+                    <td><strong>Upstream_Roles</strong></td>
+                    <td>P2-CR-HEROEDIT (Hero Editor), P2-CR-STRATEGIST (Creative Strategist), P1-R3-LEAD (Product Strategist)</td>
+                </tr>
+                <tr>
+                    <td><strong>Downstream_Roles</strong></td>
+                    <td>P3-SB-VALIDATION (Store Builder), P4-PM-MANAGER (Project Manager), P2-CR roles (for creative feedback)</td>
+                </tr>
+                <tr>
+                    <td><strong>CrossPod</strong></td>
+                    <td>true (coordinates with Pod 1 for product intel, Pod 2 for creatives, Pod 4 for ops)</td>
+                </tr>
+                <tr>
+                    <td><strong>Default_FTE</strong></td>
+                    <td>1.0</td>
+                </tr>
+                <tr>
+                    <td><strong>Tools</strong></td>
+                    <td>Meta Ads Manager, TikTok Ads Manager, Google Ads, Triple Whale, Google Analytics 4, ClickUp, Notion, Google Sheets, Discord</td>
+                </tr>
+                <tr>
+                    <td><strong>WIP_Limits</strong></td>
+                    <td>P1: 8-10 active tests | P2: 4-6 active tests | P3: 2-3 scaling efforts</td>
+                </tr>
+                <tr>
+                    <td><strong>Weekly_Throughput</strong></td>
+                    <td>10-15 P1 tests launched | 2-4 P2 confirmations | 1-2 P3 scaling moves</td>
+                </tr>
+                <tr>
+                    <td><strong>Primary_KPIs</strong></td>
+                    <td>P2_PASS rate (4-6%), Budget adherence (90-95% within $80-$100), Kill discipline (≥90% within 24-48h), Portfolio ROAS</td>
+                </tr>
+                <tr>
+                    <td><strong>ClickUp_Location</strong></td>
+                    <td>Space: "Product Pipeline" | Folder: "P3 Media & Testing" | Lists: "P1 Active Tests", "P2 Confirmation", "P3 Scaling"</td>
+                </tr>
+                <tr>
+                    <td><strong>Notion_Databases</strong></td>
+                    <td>"Product OS" (main), "Testing Config", "Creative Assets"</td>
+                </tr>
+                <tr>
+                    <td><strong>Discord_Channels</strong></td>
+                    <td>#p3-media-updates, #p1-p2-test-results, #p3-scaling-decisions, #pod-handoffs</td>
+                </tr>
+                <tr>
+                    <td><strong>Version</strong></td>
+                    <td>1.0</td>
+                </tr>
+                <tr>
+                    <td><strong>Last_Updated</strong></td>
+                    <td>December 2025</td>
+                </tr>
+                <tr>
+                    <td><strong>Author</strong></td>
+                    <td>DriveOn SOP Factory v4.0</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Purpose & Context -->
+        <section id="purpose">
+            <h2>🎯 Role Purpose & Context</h2>
+            
+            <h3>Why This Role Exists</h3>
+            <p>The Media Buyer Lead is the <strong>execution guardian</strong> of the CaniCol v4.0 lean-volume testing model. You are the only role that deploys actual ad spend against products, which makes you the <strong>final economic gatekeeper</strong> between research/creative hypotheses and real market validation.</p>
+
+            <p>Your mission is to:</p>
+            <ul>
+                <li>Run <strong>45-60 P1/P2 tests per month</strong> within a test bank of ~$4,000-$5,500</li>
+                <li>Maintain strict <strong>portfolio discipline</strong>: expect 70-80% to fail at P1, 10-16% to reach P2, and only 4-6% to pass P2</li>
+                <li>Protect the economics through <strong>ruthless kill discipline</strong> – cut failing products fast to preserve capital for winners</li>
+                <li>Scale the <strong>2-4 P2_PASS winners per month</strong> into P3 profitably while managing risk</li>
+            </ul>
+
+            <h3>How This Role Supports CaniCol Economics</h3>
+            <p>The entire DriveOn Commerce model depends on:</p>
+            <ol>
+                <li><strong>Volume × Velocity:</strong> Testing enough products fast enough to find statistical winners (45-60/month is the designed throughput)</li>
+                <li><strong>Budget Discipline:</strong> Never exceeding $120 total P1+P2 per product (standard band $80-$100) ensures we can afford the volume</li>
+                <li><strong>Hit Rate Realism:</strong> Accepting that 94-96% of products fail means your job is to <em>identify and kill losers fast</em>, not to "save" marginal products</li>
+                <li><strong>Winner Focus:</strong> The 4-6% P2_PASS products generate all profits – your scaling decisions on these products determine company success</li>
+            </ol>
+
+            <div class="callout callout-canon">
+                <div class="callout-title">⚖️ Canon Principle: Portfolio > Product</div>
+                <p>You are measured on <strong>portfolio outcomes</strong> (P2_PASS rate, test bank efficiency, aggregate ROAS), not individual product wins. Every dollar spent on a marginal test is a dollar not available for a potential winner. Kill discipline protects portfolio health.</p>
+            </div>
+
+            <h3>Connection to Holdings & Brand</h3>
+            <p>As defined in L0-02 Product and Brand Architecture, DriveOn Commerce operates as the <strong>"Dropshipping Engine"</strong> under DriveOn Holdings. Your testing work feeds three lanes:</p>
+            <ul>
+                <li><strong>Validation/Micro Stores:</strong> Fast 1-page stores for P1/P2 tests (your primary lane)</li>
+                <li><strong>Branded Niche Stores:</strong> P3_WINNER and TIER_A_WINNER products that justify brand investment</li>
+                <li><strong>General/SEO Store:</strong> Long-term catalog play for proven products with SEO potential</li>
+            </ul>
+            <p>You don't decide which lane a product enters – that's determined by L2-06 Scaling Tiers based on performance data you generate. Your job is to <strong>generate clean performance data at each gate</strong> so those decisions can be made objectively.</p>
+        </section>
+
+        <!-- Canon Constraints -->
+        <section id="canon">
+            <h2>⚖️ Canon Constraints</h2>
+
+            <div class="callout callout-warning">
+                <div class="callout-title">⚠️ NON-NEGOTIABLE CONSTRAINTS</div>
+                <p>These constraints are defined in L1-01 CaniCol Model and L2-05 Testing Canon. You may NOT modify them without a formal Canon Change Request.</p>
+            </div>
+
+            <h3>Testing Volume & Economics (L1-01)</h3>
+            <div class="kpi-strip">
+                <div class="kpi-item">
+                    <div class="kpi-label">Monthly Test Volume</div>
+                    <div class="kpi-value">45-60</div>
+                </div>
+                <div class="kpi-item">
+                    <div class="kpi-label">P1 Budget/Product</div>
+                    <div class="kpi-value">$40-$60</div>
+                </div>
+                <div class="kpi-item">
+                    <div class="kpi-label">P1+P2 Total (Standard)</div>
+                    <div class="kpi-value">$80-$100</div>
+                </div>
+                <div class="kpi-item">
+                    <div class="kpi-label">P1+P2 Hard Cap</div>
+                    <div class="kpi-value">$120</div>
+                </div>
+                <div class="kpi-item">
+                    <div class="kpi-label">Monthly Test Bank</div>
+                    <div class="kpi-value">$4-5.5K</div>
+                </div>
+                <div class="kpi-item">
+                    <div class="kpi-label">Target P2_PASS Rate</div>
+                    <div class="kpi-value">4-6%</div>
+                </div>
+            </div>
+
+            <h3>P1 Gate – Smoke Test (L2-05)</h3>
+            <p><strong>Evaluation Point:</strong> After $35-$45 spend OR ~2,000 impressions</p>
+            
+            <h4>P1_FAIL Criteria (HARD KILL)</h4>
+            <p>Kill immediately if ANY of these conditions are met:</p>
+            <ul>
+                <li><strong>CTR < 0.8%</strong></li>
+                <li><strong>CPC > $2.00</strong></li>
+                <li><strong>CTR < 1.0% AND zero depth events</strong> (no ATC, IC, or Purchase)</li>
+            </ul>
+
+            <h4>P1_PASS Criteria (ADVANCE TO P2)</h4>
+            <p>Advance to P2 if ALL conditions are met by ~$40-$45 spend:</p>
+            <ul>
+                <li>At least one creative shows <strong>CTR ≥ 1.3% OR CPC ≤ $1.20</strong></li>
+                <li>At least <strong>1 depth event</strong> (ATC, IC, or Purchase)</li>
+                <li>Minimum spend of <strong>$30</strong> (system has had a real shot)</li>
+            </ul>
+
+            <h4>P1_BORDERLINE (OPTIONAL)</h4>
+            <p>Tag as P1_BORDERLINE when CTR is 1.0-1.3% but depth events are weak. Decision: either re-test later with new creative angle OR kill if pipeline is full.</p>
+
+            <h3>P2 Gate – Confirmation (L2-05)</h3>
+            <p><strong>Evaluation Point:</strong> Total P1+P2 spend ≈ $80-$100 (or earlier if clear signal)</p>
+
+            <h4>P2_FAIL Criteria (NO SCALE)</h4>
+            <p>Kill at or before $80-$100 if ANY condition is met:</p>
+            <ul>
+                <li><strong>Purchases = 0</strong></li>
+                <li><strong>CAC > AOV</strong> (spending more than revenue per customer)</li>
+                <li>For high AOV products (>$80): <strong>CAC > 0.7 × AOV AND Purchases ≤ 1</strong></li>
+            </ul>
+
+            <h4>P2_PASS Criteria (SCALE TO P3)</h4>
+            <p>Promote to P3 if ALL conditions are met by $80-$100 spend:</p>
+            <ul>
+                <li><strong>Purchases ≥ 2</strong></li>
+                <li><strong>CAC ≤ 0.5 × AOV</strong></li>
+                <li><strong>ROAS ≥ 1.2-1.4</strong></li>
+            </ul>
+
+            <h4>P2_PASS_A_TIER (Priority Scaling)</h4>
+            <p>Tag as A-tier if:</p>
+            <ul>
+                <li><strong>Purchases ≥ 3</strong></li>
+                <li><strong>CAC ≤ 0.4 × AOV</strong></li>
+                <li><strong>ROAS ≥ 1.5</strong></li>
+            </ul>
+
+            <h4>P2_SALVAGE (Optional Lab)</h4>
+            <p>Tag as P2_SALVAGE if CAC is 0.5-0.7 × AOV, ROAS 1.0-1.2, 1-2 purchases, and strong CTR (1.5-2.0%). Can be routed to creative/offer labs for fix attempts instead of immediate scaling.</p>
+
+            <h3>P3 Scaling Guardrails (L2-06)</h3>
+            <ul>
+                <li><strong>P3_TEST:</strong> Initial scaling budgets, maintain CAC ≤ 0.6 × AOV and ROAS ≥ 1.2 over rolling 3-7 days</li>
+                <li><strong>P3_WINNER:</strong> Sustained performance (14-30 days) with CAC ≤ 0.5 × AOV and ROAS ≥ 1.3-1.5</li>
+                <li><strong>TIER_A_WINNER:</strong> Elite performance (30+ days) with CAC ≤ 0.4 × AOV and ROAS ≥ 1.5</li>
+            </ul>
+
+            <h3>WIP Caps (L2-03)</h3>
+            <ul>
+                <li><strong>P1 WIP:</strong> 8-10 active tests maximum per Media Buyer</li>
+                <li><strong>P2 WIP:</strong> 4-6 active tests maximum per Media Buyer</li>
+                <li><strong>P3 WIP:</strong> 2-3 scaling efforts maximum per Media Buyer</li>
+            </ul>
+
+            <div class="callout callout-warning">
+                <div class="callout-title">⚠️ Kill Discipline Requirement</div>
+                <p><strong>≥90% of clear P1_FAIL and P2_FAIL products must be cut within 24-48 hours of meeting threshold.</strong> This is not optional. Hesitation to kill weak products is the #1 threat to test bank economics and portfolio health.</p>
+            </div>
+        </section>
+
+        <!-- Day in the Life -->
+        <section id="day-in-life">
+            <h2>📅 Day in the Life Timeline</h2>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-time">8:00 AM – Morning Setup & Prioritization</div>
+                    <h4>Actions:</h4>
+                    <ul>
+                        <li>Open ClickUp: <strong>P3 Media & Testing folder</strong> → Filter "My Tasks" + "Due Today"</li>
+                        <li>Open Notion: <strong>Product OS database</strong> → View "P1 Active Tests" and "P2 In Progress"</li>
+                        <li>Check Discord: <strong>#p3-media-updates</strong> and <strong>#pod-handoffs</strong> for overnight alerts</li>
+                        <li>Review Triple Whale dashboard: overnight performance summary across all active tests</li>
+                    </ul>
+                    <h4>Focus:</h4>
+                    <p>Identify any tests that hit kill thresholds overnight, note any urgent creative requests, check if any P2 products are ready for P3 promotion decisions.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">8:30 AM – Kill/Park/Salvage Decisions</div>
+                    <h4>Actions:</h4>
+                    <ul>
+                        <li>Pull P1 tests that hit ~$40-$45 spend: evaluate against P1_PASS/P1_FAIL criteria</li>
+                        <li>Pull P2 tests that hit ~$80-$100 total spend: evaluate against P2_PASS/P2_FAIL criteria</li>
+                        <li>For each failing product:
+                            <ul>
+                                <li>Update status in ClickUp (P1_FAIL or P2_FAIL)</li>
+                                <li>Pause campaigns in Meta/TikTok Ads Manager</li>
+                                <li>Log kill reason in Notion Product OS</li>
+                                <li>Post to <strong>#p1-p2-test-results</strong> with brief rationale</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <h4>Decision Framework:</h4>
+                    <p>Use exact L2-05 thresholds. If borderline, check: Is there a clear creative hypothesis to test? If yes, tag P1_BORDERLINE. If no, kill immediately.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">9:30 AM – P2 Advancement & P3 Promotion</div>
+                    <h4>Actions:</h4>
+                    <ul>
+                        <li>For P1_PASS products: duplicate winning creative set into P2 campaign structure</li>
+                        <li>Allocate P2 top-up budget (typically +$35-$55 to reach $80-$100 total)</li>
+                        <li>For P2_PASS products: coordinate with P3-SB-VALIDATION on store readiness for scaling</li>
+                        <li>Set up P3_TEST campaign structure with initial scaling budget</li>
+                        <li>Update all statuses in ClickUp and Notion</li>
+                        <li>Post handoffs to <strong>#pod-handoffs</strong> with next owner tagged</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">10:30 AM – New P1 Launch Block</div>
+                    <h4>Actions:</h4>
+                    <ul>
+                        <li>Review R3 product queue in ClickUp: <strong>"P1 Launch Queue"</strong></li>
+                        <li>Pull 2-4 new products with creative packs marked "Ready for P1"</li>
+                        <li>For each product:
+                            <ul>
+                                <li>Create Meta/TikTok campaign (CBO or ABO per platform SOP)</li>
+                                <li>Upload 4-6 creatives from P2-CR Hero Editor</li>
+                                <li>Set P1 budget: $45 target, $40-$60 range</li>
+                                <li>Configure basic tracking (Pixel, UTMs, GA4 events)</li>
+                                <li>Launch campaigns</li>
+                                <li>Update ClickUp to "P1 Active" + log campaign links</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <h4>Quality Check:</h4>
+                    <p>Confirm each product has proper store page live (coordinate with P3-SB-VALIDATION if missing), pixel firing correctly, and creative specifications match platform requirements.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">12:00 PM – Mid-Day Check & Adjustments</div>
+                    <h4>Actions:</h4>
+                    <ul>
+                        <li>Review active P1/P2 campaigns for any delivery issues (low spend, high CPM, rejected ads)</li>
+                        <li>Check for early positive signals on new P1 launches (CTR trending >1.5%, early ATCs)</li>
+                        <li>Make minor bid/budget adjustments if campaigns aren't spending or are spending too aggressively</li>
+                        <li>Respond to any urgent requests from Pod 2 (creative feedback) or Pod 4 (ops issues)</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">1:00 PM – P3 Optimization & Scaling Decisions</div>
+                    <h4>Actions:</h4>
+                    <ul>
+                        <li>Review P3_TEST and P3_WINNER campaigns (2-3 active per Media Buyer)</li>
+                        <li>Check rolling 3-7 day metrics: CAC vs AOV, ROAS, purchase volume</li>
+                        <li>For products meeting P3_WINNER criteria: coordinate brand/niche store build with P3-SB-BRAND</li>
+                        <li>For products showing CAC deterioration: implement de-scale playbook (reduce budgets 20-50%)</li>
+                        <li>For products hitting P3 kill triggers: coordinate with Ops/PM on graceful shutdown</li>
+                        <li>Schedule creative refresh requests with P2-CR team for aging P3 campaigns</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">2:30 PM – Data Logging & Reporting</div>
+                    <h4>Actions:</h4>
+                    <ul>
+                        <li>Update Notion Product OS with latest metrics for all active tests</li>
+                        <li>Fill testing metrics in Notion Testing Config (if using structured tracking DB)</li>
+                        <li>Update weekly throughput tracker: # P1 launched, # P1_PASS, # P2_PASS, P2_PASS rate</li>
+                        <li>Flag any products requiring Tier-S consideration (high conviction but borderline P2 metrics)</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">3:30 PM – Creative Feedback & Coordination</div>
+                    <h4>Actions:</h4>
+                    <ul>
+                        <li>Review creative performance data from P1/P2 tests</li>
+                        <li>Identify winning vs. failing creative patterns (hooks, formats, angles)</li>
+                        <li>Create feedback doc for P2-CR-STRATEGIST:
+                            <ul>
+                                <li>Which angles/hooks are working (CTR >1.5%)</li>
+                                <li>Which are failing (CTR <0.8%)</li>
+                                <li>Specific requests for next creative iteration</li>
+                            </ul>
+                        </li>
+                        <li>Post feedback to <strong>#pod2-creative-intel</strong></li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">4:30 PM – End-of-Day Review & Planning</div>
+                    <h4>Actions:</h4>
+                    <ul>
+                        <li>Review WIP status: confirm P1 WIP ≤ 10, P2 WIP ≤ 6, P3 WIP ≤ 3</li>
+                        <li>Plan tomorrow's launches: identify which R3 products are ready to enter P1</li>
+                        <li>Check test bank spend: compare month-to-date vs. budget ($4-5.5K target)</li>
+                        <li>Identify any blockers for tomorrow (missing creatives, store issues, platform problems)</li>
+                        <li>Update personal task list in ClickUp</li>
+                        <li>Post daily summary to <strong>#p3-media-updates</strong>:
+                            <ul>
+                                <li>X new P1 launches</li>
+                                <li>X P1 passes / X P1 kills</li>
+                                <li>X P2 passes / X P2 kills</li>
+                                <li>Any escalations or blockers</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="callout callout-tip">
+                <div class="callout-title">💡 Time Management Principle</div>
+                <p><strong>Front-load kills, back-load launches.</strong> Kill/park decisions in the morning protect your WIP caps and test bank. New launches in late morning ensure you have clean morning data the next day. P3 work happens mid-day when you have cognitive bandwidth for strategic decisions.</p>
+            </div>
+        </section>
+
+        <!-- Core Workflows -->
+        <section id="workflows">
+            <h2>⚙️ Core Workflows</h2>
+
+            <h3>Workflow Diagram – P1/P2/P3 Pipeline</h3>
+            <div class="mermaid">
+flowchart TD
+    Start([R3 Product Ready]) --> CheckQueue{WIP Under<br/>Limit?}
+    CheckQueue -->|No| Wait[Park in Queue]
+    CheckQueue -->|Yes| P1Launch[Launch P1 Campaign<br/>$40-$60 budget]
+    
+    P1Launch --> P1Monitor[Monitor to ~$45 spend<br/>or 2000 impressions]
+    
+    P1Monitor --> P1Eval{Evaluate P1<br/>Criteria}
+    P1Eval -->|CTR<0.8 OR CPC>$2| P1Fail[Tag P1_FAIL<br/>Kill Product]
+    P1Eval -->|Borderline| P1Border[Tag P1_BORDERLINE<br/>Park or Re-test]
+    P1Eval -->|Pass| P1Pass[Tag P1_PASS<br/>Advance to P2]
+    
+    P1Pass --> P2Launch[Launch P2 Campaign<br/>Top-up to $80-$100]
+    
+    P2Launch --> P2Monitor[Monitor to<br/>$80-$100 total]
+    
+    P2Monitor --> P2Eval{Evaluate P2<br/>Criteria}
+    P2Eval -->|CAC>AOV OR<br/>Purchases=0| P2Fail[Tag P2_FAIL<br/>Kill Product]
+    P2Eval -->|Marginal| P2Salvage[Tag P2_SALVAGE<br/>Send to Lab]
+    P2Eval -->|Pass| P2Pass[Tag P2_PASS<br/>Scale to P3]
+    
+    P2Pass --> P3Test[Launch P3_TEST<br/>Controlled Scale]
+    
+    P3Test --> P3Monitor[Monitor 3-7 days<br/>CAC & ROAS]
+    
+    P3Monitor --> P3Eval{P3<br/>Performance?}
+    P3Eval -->|Failing| P3Descale[De-scale or Kill]
+    P3Eval -->|Stable| P3Winner[Tag P3_WINNER]
+    P3Eval -->|Elite| P3TierA[Tag TIER_A_WINNER]
+    
+    style P1Fail fill:#ffcccc
+    style P2Fail fill:#ffcccc
+    style P3Descale fill:#ffcccc
+    style P1Pass fill:#ccffcc
+    style P2Pass fill:#ccffcc
+    style P3Winner fill:#ccffcc
+    style P3TierA fill:#ccffee
+            </div>
+
+            <details>
+                <summary>Workflow 1: Launch P1 Smoke Test</summary>
+                <div class="details-content">
+                    <h4>Trigger</h4>
+                    <p>R3 product packet marked "Ready for P1" in ClickUp with creative pack from P2-CR</p>
+
+                    <h4>Prerequisites</h4>
+                    <ul class="checklist">
+                        <li>Product has P1-ready creative pack (4-6 assets minimum, at least 3 videos)</li>
+                        <li>Store page is live and functional (coordinate with P3-SB-VALIDATION)</li>
+                        <li>Current P1 WIP < 10</li>
+                        <li>Test bank has available budget</li>
+                    </ul>
+
+                    <h4>Inputs</h4>
+                    <ul>
+                        <li><strong>ClickUp:</strong> Product task in "P1 Launch Queue" list</li>
+                        <li><strong>Notion Product OS:</strong> Product record with AOV, margin data, supplier info</li>
+                        <li><strong>Creative Assets:</strong> Located in Google Drive /Products/[Product_ID]/Creatives/P1/</li>
+                        <li><strong>Store URL:</strong> Validation store page URL from P3-SB-VALIDATION</li>
+                    </ul>
+
+                    <h4>Steps</h4>
+                    <ol>
+                        <li><strong>Pre-Launch Verification</strong>
+                            <ul>
+                                <li>Confirm store page loads correctly and has basic product info</li>
+                                <li>Verify Meta Pixel / TikTok Pixel is firing on product page</li>
+                                <li>Test checkout flow manually (at least to payment screen)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Campaign Structure Setup (Meta)</strong>
+                            <ul>
+                                <li>Campaign Level: Create new campaign "[Product_ID] P1 Smoke Test"</li>
+                                <li>Objective: Sales (Purchase conversion)</li>
+                                <li>Campaign Budget: $45 (lifetime budget)</li>
+                                <li>Ad Set Level: Single broad ad set "P1 Test - US Broad"
+                                    <ul>
+                                        <li>Location: United States (or primary market per product)</li>
+                                        <li>Age: 18-65+ (unless product-specific narrowing required)</li>
+                                        <li>Gender: All (unless product-specific)</li>
+                                        <li>Detailed Targeting: Broad (no detailed targeting for P1)</li>
+                                        <li>Placements: Automatic placements (Feed, Stories, Reels)</li>
+                                    </ul>
+                                </li>
+                                <li>Ad Level: Upload all 4-6 creatives as separate ads
+                                    <ul>
+                                        <li>Naming: [Product_ID]_P1_Creative_01, 02, etc.</li>
+                                        <li>Destination: Product page URL with UTM parameters</li>
+                                        <li>Copy: Use hooks from P2-CR creative brief</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><strong>Campaign Structure Setup (TikTok, if applicable)</strong>
+                            <ul>
+                                <li>Campaign: "[Product_ID] P1 Test TikTok"</li>
+                                <li>Objective: Website Conversions (Complete Payment)</li>
+                                <li>Budget: $45 lifetime</li>
+                                <li>Ad Group: Broad targeting, 18-55, US, all genders, automatic placements</li>
+                                <li>Upload creatives with product page link</li>
+                            </ul>
+                        </li>
+                        <li><strong>Tracking Setup</strong>
+                            <ul>
+                                <li>Confirm UTM parameters in destination URL: ?utm_source=facebook&utm_medium=paid&utm_campaign=[Product_ID]_P1</li>
+                                <li>Add campaign link to ClickUp task custom field "Campaign URL"</li>
+                                <li>Add campaign link to Notion Product OS record</li>
+                            </ul>
+                        </li>
+                        <li><strong>Launch & Update Status</strong>
+                            <ul>
+                                <li>Activate campaign in Ads Manager</li>
+                                <li>Move ClickUp task to "P1 Active Tests" list</li>
+                                <li>Update Notion Product OS: Status = "In Testing", Current Gate = "P1"</li>
+                                <li>Set ClickUp due date to 3 days from launch (typical P1 completion window)</li>
+                                <li>Post launch notification to #p3-media-updates: "✅ P1 launched: [Product_ID] - [Product Name]"</li>
+                            </ul>
+                        </li>
+                    </ol>
+
+                    <h4>Outputs</h4>
+                    <ul>
+                        <li><strong>Live Campaign:</strong> Meta and/or TikTok campaign actively spending</li>
+                        <li><strong>ClickUp Status:</strong> Task moved to "P1 Active Tests"</li>
+                        <li><strong>Notion Status:</strong> Product OS updated with P1 start date and campaign links</li>
+                        <li><strong>Discord Notification:</strong> Launch posted to #p3-media-updates</li>
+                    </ul>
+
+                    <h4>Quality Checks</h4>
+                    <ul>
+                        <li>Campaign shows "Active" status and is spending within 2-4 hours</li>
+                        <li>No disapproved ads (if any, fix immediately)</li>
+                        <li>Pixel events showing up in Events Manager within 24 hours</li>
+                        <li>Budget pacing looks reasonable (~$15/day for $45 total)</li>
+                    </ul>
+
+                    <h4>Common Failure Modes</h4>
+                    <ul>
+                        <li><strong>Ads rejected:</strong> Review creative for policy violations, resubmit with edits, or replace with backup creative</li>
+                        <li><strong>Campaign not spending:</strong> Check bid strategy, increase budget slightly if underspending, verify audience isn't too narrow</li>
+                        <li><strong>Store page errors:</strong> Coordinate immediate fix with P3-SB-VALIDATION, pause campaign if page is broken</li>
+                        <li><strong>Missing pixel events:</strong> Check pixel installation with developer or P4-OP-INTEGRATOR</li>
+                    </ul>
+
+                    <h4>Time Estimate</h4>
+                    <p>15-25 minutes per product (experienced operator, pre-verified creatives and store)</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>Workflow 2: Evaluate P1 Results & Make Kill/Pass Decision</summary>
+                <div class="details-content">
+                    <h4>Trigger</h4>
+                    <p>Product reaches ~$40-$45 P1 spend OR ~2,000 impressions (whichever comes first)</p>
+
+                    <h4>Inputs</h4>
+                    <ul>
+                        <li><strong>Meta/TikTok Ads Manager:</strong> Campaign performance data (CTR, CPC, impressions, ATC, IC, Purchases)</li>
+                        <li><strong>Triple Whale / GA4:</strong> On-site behavior data</li>
+                        <li><strong>Notion Product OS:</strong> Product AOV and margin for context</li>
+                    </ul>
+
+                    <h4>Steps</h4>
+                    <ol>
+                        <li><strong>Pull Metrics</strong>
+                            <ul>
+                                <li>Total spend (should be $35-$60 range)</li>
+                                <li>Impressions</li>
+                                <li>Link CTR (%)</li>
+                                <li>CPC ($)</li>
+                                <li>Link Clicks</li>
+                                <li>Add to Carts (ATC)</li>
+                                <li>Initiate Checkouts (IC)</li>
+                                <li>Purchases</li>
+                            </ul>
+                        </li>
+                        <li><strong>Apply P1_FAIL Criteria</strong> (from L2-05)
+                            <p>Kill immediately if ANY of these are true:</p>
+                            <ul>
+                                <li>CTR < 0.8%</li>
+                                <li>CPC > $2.00</li>
+                                <li>CTR < 1.0% AND zero depth events (no ATC, IC, or Purchase)</li>
+                            </ul>
+                            <p>If P1_FAIL → proceed to kill workflow (see Workflow 3)</p>
+                        </li>
+                        <li><strong>Apply P1_PASS Criteria</strong> (from L2-05)
+                            <p>Pass to P2 if ALL are true:</p>
+                            <ul>
+                                <li>At least one creative shows CTR ≥ 1.3% OR CPC ≤ $1.20</li>
+                                <li>At least 1 depth event (ATC, IC, or Purchase)</li>
+                                <li>Minimum spend $30</li>
+                            </ul>
+                            <p>If P1_PASS → proceed to P2 launch workflow (see Workflow 4)</p>
+                        </li>
+                        <li><strong>Handle Borderline Cases</strong>
+                            <p>If neither clear fail nor clear pass:</p>
+                            <ul>
+                                <li>CTR in 1.0-1.3% range</li>
+                                <li>Only 1 ATC on 40-50 clicks</li>
+                                <li>No purchases but some engagement signals</li>
+                            </ul>
+                            <p>Decision framework:</p>
+                            <ul>
+                                <li>Is there a specific creative hypothesis to test? (New hook angle, different format)</li>
+                                <li>Is the product strategically important? (Niche expansion, supplier relationship)</li>
+                                <li>Is pipeline capacity available?</li>
+                            </ul>
+                            <p>If YES to above → tag P1_BORDERLINE, send back to P2-CR with specific creative request</p>
+                            <p>If NO → treat as P1_FAIL and kill</p>
+                        </li>
+                        <li><strong>Document Decision</strong>
+                            <ul>
+                                <li>Update Notion Product OS:
+                                    <ul>
+                                        <li>P1 Status: P1_PASS, P1_FAIL, or P1_BORDERLINE</li>
+                                        <li>P1 Spend: [actual spend]</li>
+                                        <li>P1 CTR: [best creative CTR]</li>
+                                        <li>P1 CPC: [average CPC]</li>
+                                        <li>P1 Depth Events: [total ATC + IC + Purchases]</li>
+                                        <li>P1 Decision Rationale: [1-2 sentence explanation]</li>
+                                    </ul>
+                                </li>
+                                <li>Update ClickUp:
+                                    <ul>
+                                        <li>Move to appropriate list: "P2 Confirmation Queue" (if pass) or "Archive - P1 Killed" (if fail)</li>
+                                        <li>Add comment with key metrics</li>
+                                    </ul>
+                                </li>
+                                <li>Post to Discord #p1-p2-test-results:
+                                    <ul>
+                                        <li>Format: "[Status Emoji] [Product_ID] - [Product Name]"</li>
+                                        <li>P1_PASS: ✅ + "CTR: X%, CPC: $X, X depth events → P2"</li>
+                                        <li>P1_FAIL: ❌ + "CTR: X%, CPC: $X, reason: [specific criterion violated]"</li>
+                                        <li>P1_BORDERLINE: ⚠️ + "CTR: X%, marginal signal, parked for creative revision"</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ol>
+
+                    <h4>Outputs</h4>
+                    <ul>
+                        <li><strong>Decision Tag:</strong> P1_PASS, P1_FAIL, or P1_BORDERLINE in Notion and ClickUp</li>
+                        <li><strong>Campaign Action:</strong> Either advanced to P2, paused and archived, or parked for revision</li>
+                        <li><strong>Discord Post:</strong> Results notification with rationale</li>
+                        <li><strong>Data Log:</strong> All P1 metrics recorded in Notion for portfolio analysis</li>
+                    </ul>
+
+                    <h4>Quality Checks</h4>
+                    <ul>
+                        <li>Decision aligns with exact L2-05 criteria (no "gut feel" overrides)</li>
+                        <li>Rationale is clear and based on data, not qualitative judgment</li>
+                        <li>All metrics are accurately recorded in Notion</li>
+                        <li>Decision communicated same-day to downstream roles</li>
+                    </ul>
+
+                    <h4>Time Estimate</h4>
+                    <p>5-10 minutes per product (pure evaluation and logging)</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>Workflow 3: Kill Product (P1_FAIL or P2_FAIL)</summary>
+                <div class="details-content">
+                    <h4>Trigger</h4>
+                    <p>Product tagged P1_FAIL or P2_FAIL based on L2-05 criteria</p>
+
+                    <h4>Timing Requirement</h4>
+                    <p><strong>Kill must be executed within 24-48 hours of meeting fail criteria.</strong> This is non-negotiable for test bank protection.</p>
+
+                    <h4>Steps</h4>
+                    <ol>
+                        <li><strong>Pause All Active Campaigns</strong>
+                            <ul>
+                                <li>In Meta Ads Manager: select all campaigns for this product → pause</li>
+                                <li>In TikTok Ads Manager: select all campaigns → pause</li>
+                                <li>Verify no spend is occurring within 1 hour of pause</li>
+                            </ul>
+                        </li>
+                        <li><strong>Update ClickUp</strong>
+                            <ul>
+                                <li>Move task to "Archive - [Gate] Killed" list (e.g., "Archive - P1 Killed")</li>
+                                <li>Status: "Killed"</li>
+                                <li>Add final comment with:
+                                    <ul>
+                                        <li>Total spend</li>
+                                        <li>Final metrics (CTR, CPC, CAC, purchases, ROAS if applicable)</li>
+                                        <li>Specific kill reason (which criterion violated)</li>
+                                        <li>Date killed</li>
+                                    </ul>
+                                </li>
+                                <li>Remove from any active sprint or focus views</li>
+                            </ul>
+                        </li>
+                        <li><strong>Update Notion Product OS</strong>
+                            <ul>
+                                <li>Status: "Killed"</li>
+                                <li>Current Gate: [P1 or P2 as applicable]</li>
+                                <li>Final Result: [P1_FAIL or P2_FAIL]</li>
+                                <li>Kill Date: [date]</li>
+                                <li>Kill Reason: [detailed rationale with metrics]</li>
+                                <li>Total Test Spend: [sum of P1 + P2 if applicable]</li>
+                                <li>Archive checkbox: checked (removes from active pipeline views)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Store Page Handling</strong>
+                            <ul>
+                                <li>Coordinate with P3-SB-VALIDATION to unpublish or mark product as "out of stock"</li>
+                                <li>Do NOT delete store page immediately (may need for forensic analysis)</li>
+                                <li>Mark for cleanup in next monthly store maintenance cycle</li>
+                            </ul>
+                        </li>
+                        <li><strong>Creative Assets</strong>
+                            <ul>
+                                <li>Move creative files in Google Drive to /Products/[Product_ID]/Archive/</li>
+                                <li>Note any winning creative patterns in creative feedback doc (even if product failed overall, a creative angle might be worth saving)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Communications</strong>
+                            <ul>
+                                <li>Post kill notification to #p1-p2-test-results:
+                                    <ul>
+                                        <li>Format: "❌ KILLED: [Product_ID] - [Product Name]"</li>
+                                        <li>Gate: [P1 or P2]</li>
+                                        <li>Spend: $[total]</li>
+                                        <li>Reason: [1 sentence citing specific criterion]</li>
+                                        <li>Key Metric: [the metric that triggered kill]</li>
+                                    </ul>
+                                </li>
+                                <li>If product was high-visibility or Tier-S consideration, post brief to #p4-systems-ops for PM awareness</li>
+                            </ul>
+                        </li>
+                        <li><strong>Portfolio Tracking</strong>
+                            <ul>
+                                <li>Update weekly kill count tracker (for portfolio metrics)</li>
+                                <li>Confirm updated P1 kill rate and P2 kill rate are within expected portfolio distribution (70-80% P1 fail, 84-90% overall fail rate)</li>
+                            </ul>
+                        </li>
+                    </ol>
+
+                    <h4>Outputs</h4>
+                    <ul>
+                        <li><strong>Campaigns:</strong> All paused, no further spend</li>
+                        <li><strong>ClickUp:</strong> Task archived with full documentation</li>
+                        <li><strong>Notion:</strong> Product marked "Killed" with metrics logged</li>
+                        <li><strong>Store:</strong> Product unpublished or out-of-stock</li>
+                        <li><strong>Discord:</strong> Kill notification posted</li>
+                        <li><strong>WIP:</strong> Freed up capacity for new product launches</li>
+                    </ul>
+
+                    <h4>Quality Checks</h4>
+                    <ul>
+                        <li>Kill executed within 24-48 hour window from threshold</li>
+                        <li>All spend stopped (verify no runaway campaigns)</li>
+                        <li>Kill reason clearly documented and cites specific L2-05 criterion</li>
+                        <li>No emotional language in documentation ("this product sucked") – keep objective and metric-based</li>
+                    </ul>
+
+                    <h4>Common Mistakes to Avoid</h4>
+                    <ul>
+                        <li><strong>Hesitation kills:</strong> Delaying kill because "maybe it will turn around" – this drains test bank</li>
+                        <li><strong>Sunk cost fallacy:</strong> Continuing because "we already spent $80" – L2-05 criteria exist for a reason</li>
+                        <li><strong>Salvage syndrome:</strong> Trying to "save" products that clearly failed – be strict on P2_SALVAGE criteria</li>
+                        <li><strong>Incomplete documentation:</strong> Future analysis requires clean kill data – log everything</li>
+                    </ul>
+
+                    <h4>Time Estimate</h4>
+                    <p>10-15 minutes per product</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>Workflow 4: Launch P2 Confirmation Test</summary>
+                <div class="details-content">
+                    <h4>Trigger</h4>
+                    <p>Product tagged P1_PASS and ready for P2 validation</p>
+
+                    <h4>Prerequisites</h4>
+                    <ul class="checklist">
+                        <li>P1_PASS tag confirmed in Notion and ClickUp</li>
+                        <li>Winning creative(s) identified from P1 (CTR ≥1.3% or CPC ≤$1.20)</li>
+                        <li>At least 1 depth event (ATC, IC, or Purchase) in P1</li>
+                        <li>Current P2 WIP < 6</li>
+                        <li>Test bank has budget for P2 top-up (~$35-$55)</li>
+                    </ul>
+
+                    <h4>Inputs</h4>
+                    <ul>
+                        <li><strong>P1 Campaign Data:</strong> Winning creative assets and performance benchmarks</li>
+                        <li><strong>Notion Product OS:</strong> AOV, margin, supplier info for CAC evaluation context</li>
+                        <li><strong>Store Status:</strong> Confirm store page is still functional (or needs refresh)</li>
+                    </ul>
+
+                    <h4>Steps</h4>
+                    <ol>
+                        <li><strong>Calculate P2 Budget Allocation</strong>
+                            <ul>
+                                <li>P1 actual spend: $[X]</li>
+                                <li>Target total P1+P2: $80-$100 (standard band)</li>
+                                <li>P2 top-up: $[80-100 minus P1 spend]</li>
+                                <li>Typical P2 range: $35-$55</li>
+                                <li>Absolute cap: Total cannot exceed $120</li>
+                            </ul>
+                        </li>
+                        <li><strong>Duplicate Winning Creatives</strong>
+                            <ul>
+                                <li>Identify 2-3 top-performing creatives from P1 (highest CTR or lowest CPC)</li>
+                                <li>If P1 only had 1 strong creative, consider requesting 1-2 quick variants from P2-CR</li>
+                                <li>Clone creative files in Google Drive to /Products/[Product_ID]/Creatives/P2/</li>
+                            </ul>
+                        </li>
+                        <li><strong>Campaign Structure Setup (Meta)</strong>
+                            <ul>
+                                <li>Option A – Extend P1 Campaign:
+                                    <ul>
+                                        <li>Increase P1 campaign budget by P2 top-up amount</li>
+                                        <li>Pause losing creatives, keep only winners running</li>
+                                        <li>Rename campaign to "[Product_ID] P1+P2 Confirmation"</li>
+                                    </ul>
+                                </li>
+                                <li>Option B – New P2 Campaign (preferred for clean data):
+                                    <ul>
+                                        <li>Create new campaign "[Product_ID] P2 Confirmation"</li>
+                                        <li>Same objective: Sales (Purchase)</li>
+                                        <li>Budget: [P2 top-up amount] lifetime</li>
+                                        <li>Ad Set: Clone P1 targeting OR test slight narrowing if P1 data suggests (e.g., age/gender skew)</li>
+                                        <li>Ads: Upload 2-3 winning creatives from P1</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><strong>Update Tracking & Status</strong>
+                            <ul>
+                                <li>Update UTM parameters: utm_campaign=[Product_ID]_P2</li>
+                                <li>Add P2 campaign link to ClickUp custom field</li>
+                                <li>Move ClickUp task to "P2 Confirmation" list</li>
+                                <li>Update Notion Product OS:
+                                    <ul>
+                                        <li>Status: "In Testing"</li>
+                                        <li>Current Gate: "P2"</li>
+                                        <li>P2 Start Date: [date]</li>
+                                        <li>Target P1+P2 Total: $[amount]</li>
+                                    </ul>
+                                </li>
+                                <li>Set ClickUp due date 5-7 days from P2 launch (typical P2 window)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Launch & Communicate</strong>
+                            <ul>
+                                <li>Activate P2 campaign</li>
+                                <li>Post to #p3-media-updates: "🚀 P2 launched: [Product_ID] - [Product Name] (P1 CTR: X%, advancing with [creative count] winning assets)"</li>
+                                <li>Post handoff to #pod-handoffs: "@P3-SB-VALIDATION FYI: [Product_ID] now in P2, may need store refresh if passes"</li>
+                            </ul>
+                        </li>
+                    </ol>
+
+                    <h4>Outputs</h4>
+                    <ul>
+                        <li><strong>Live P2 Campaign:</strong> Active campaign spending toward $80-$100 total</li>
+                        <li><strong>ClickUp Status:</strong> Task in "P2 Confirmation" list</li>
+                        <li><strong>Notion Status:</strong> Gate = "P2", P2 campaign details logged</li>
+                        <li><strong>Discord Notifications:</strong> Launch posted, downstream roles alerted</li>
+                    </ul>
+
+                    <h4>Quality Checks</h4>
+                    <ul>
+                        <li>Only winning P1 creatives are used (no weak performers carried forward)</li>
+                        <li>P2 budget calculated correctly to hit $80-$100 total band</li>
+                        <li>Campaign spending within 4-6 hours of launch</li>
+                        <li>Pixel still firing correctly (especially if store was edited since P1)</li>
+                    </ul>
+
+                    <h4>Decision Point: Should I narrow targeting in P2?</h4>
+                    <p><strong>Default: Keep P1 targeting in P2.</strong> Only narrow if P1 data clearly shows:</p>
+                    <ul>
+                        <li>Strong age or gender skew (e.g., 80%+ of engagement from women 25-34)</li>
+                        <li>Platform data suggests specific interest alignment</li>
+                    </ul>
+                    <p>Do NOT over-optimize targeting in P2 – the goal is CAC/ROAS validation at reasonable scale, not micro-optimization.</p>
+
+                    <h4>Time Estimate</h4>
+                    <p>15-20 minutes per product</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>Workflow 5: Evaluate P2 Results & Scale/Kill Decision</summary>
+                <div class="details-content">
+                    <h4>Trigger</h4>
+                    <p>Product reaches total P1+P2 spend of $80-$100 (or earlier if clear signal)</p>
+
+                    <h4>Inputs</h4>
+                    <ul>
+                        <li><strong>Combined P1+P2 Data:</strong> Total spend, purchases, revenue, CAC, ROAS</li>
+                        <li><strong>Notion Product OS:</strong> Product AOV (critical for CAC comparison)</li>
+                        <li><strong>Triple Whale / GA4:</strong> Full funnel metrics, customer behavior data</li>
+                    </ul>
+
+                    <h4>Steps</h4>
+                    <ol>
+                        <li><strong>Pull Comprehensive Metrics</strong>
+                            <ul>
+                                <li>Total P1+P2 Spend: $[X]</li>
+                                <li>Total Purchases: [#]</li>
+                                <li>Total Revenue: $[X]</li>
+                                <li>AOV: $[average order value – from revenue/purchases]</li>
+                                <li>CAC: $[total spend / purchases]</li>
+                                <li>Platform ROAS: [revenue / spend]</li>
+                                <li>Supplementary: CTR, CPC, Add-to-Carts, Checkout Rate</li>
+                            </ul>
+                        </li>
+                        <li><strong>Apply P2_FAIL Criteria</strong> (from L2-05)
+                            <p>Kill if ANY of these are true:</p>
+                            <ul>
+                                <li>Purchases = 0</li>
+                                <li>CAC > AOV (spending more per customer than they pay)</li>
+                                <li>For high AOV products (AOV > $80): CAC > 0.7 × AOV AND Purchases ≤ 1</li>
+                            </ul>
+                            <p>If P2_FAIL → proceed to kill workflow (Workflow 3)</p>
+                        </li>
+                        <li><strong>Apply P2_PASS Criteria</strong> (from L2-05)
+                            <p>Pass to P3 if ALL are true:</p>
+                            <ul>
+                                <li>Purchases ≥ 2</li>
+                                <li>CAC ≤ 0.5 × AOV</li>
+                                <li>ROAS ≥ 1.2-1.4</li>
+                            </ul>
+                            <p>If P2_PASS → proceed to P3 scaling workflow (Workflow 6)</p>
+                        </li>
+                        <li><strong>Check for A-Tier Status</strong> (from L2-05)
+                            <p>If product meets stricter criteria:</p>
+                            <ul>
+                                <li>Purchases ≥ 3</li>
+                                <li>CAC ≤ 0.4 × AOV</li>
+                                <li>ROAS ≥ 1.5</li>
+                            </ul>
+                            <p>Tag as <strong>P2_PASS_A_TIER</strong> for priority scaling and brand build consideration</p>
+                        </li>
+                        <li><strong>Handle Salvage Cases</strong> (from L2-05)
+                            <p>If product shows:</p>
+                            <ul>
+                                <li>CAC in 0.5-0.7 × AOV range (marginal but not terrible)</li>
+                                <li>ROAS 1.0-1.2 (breakeven to slightly positive)</li>
+                                <li>1-2 purchases and strong CTR (1.5-2.0%+)</li>
+                            </ul>
+                            <p>Consider tagging <strong>P2_SALVAGE</strong> and routing to creative/offer lab for fix attempts. Decision factors:</p>
+                            <ul>
+                                <li>Is there clear creative hypothesis to test? (Different hook angle, format variation)</li>
+                                <li>Is there offer/pricing hypothesis? (Different price point, bundle, upsell)</li>
+                                <li>Is the product strategically important? (Category expansion, supplier relationship)</li>
+                            </ul>
+                            <p>If YES → tag P2_SALVAGE, coordinate with P2-CR-STRATEGIST and P4-OP-INTEGRATOR on lab approach</p>
+                            <p>If NO → treat as P2_FAIL and kill</p>
+                        </li>
+                        <li><strong>Document Decision</strong>
+                            <ul>
+                                <li>Update Notion Product OS:
+                                    <ul>
+                                        <li>P2 Status: [P2_PASS, P2_PASS_A_TIER, P2_FAIL, or P2_SALVAGE]</li>
+                                        <li>Total P1+P2 Spend: $[X]</li>
+                                        <li>Purchases: [#]</li>
+                                        <li>AOV: $[X]</li>
+                                        <li>CAC: $[X]</li>
+                                        <li>ROAS: [X.XX]</li>
+                                        <li>P2 Decision Rationale: [explanation citing specific metrics vs criteria]</li>
+                                    </ul>
+                                </li>
+                                <li>Update ClickUp:
+                                    <ul>
+                                        <li>P2_PASS → move to "P3 Scaling Queue"</li>
+                                        <li>P2_FAIL → move to "Archive - P2 Killed"</li>
+                                        <li>P2_SALVAGE → move to "Creative Lab Queue"</li>
+                                        <li>Add detailed comment with all metrics</li>
+                                    </ul>
+                                </li>
+                                <li>Post to Discord #p1-p2-test-results:
+                                    <ul>
+                                        <li>P2_PASS: "🎉 WINNER: [Product_ID] - [Product Name] | Purchases: [#], CAC: $[X] (X% of AOV), ROAS: [X.XX] → P3 SCALING"</li>
+                                        <li>P2_PASS_A_TIER: "🌟 A-TIER WINNER: [Product_ID] - [Product Name] | Elite metrics: CAC $[X] (X% of AOV), ROAS [X.XX] → Priority P3"</li>
+                                        <li>P2_FAIL: "❌ P2 KILLED: [Product_ID] - [Product Name] | CAC: $[X] vs AOV $[X], ROAS: [X.XX] | Reason: [specific criterion]"</li>
+                                        <li>P2_SALVAGE: "⚠️ SALVAGE: [Product_ID] - [Product Name] | Marginal metrics but salvageable signal → Creative Lab"</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><strong>Coordinate Next Steps</strong>
+                            <ul>
+                                <li>If P2_PASS: Post handoff to #pod-handoffs: "@P3-SB-VALIDATION @P3-SB-BRAND [Product_ID] is P2_PASS, needs scaling store prep. AOV $[X], expecting CAC $[X] range in P3. Coordinate brand vs validation lane?"</li>
+                                <li>If P2_PASS_A_TIER: Tag @P4-OP-INTEGRATOR and @Founder for brand build approval conversation</li>
+                                <li>If P2_SALVAGE: Post to #pod2-creative-intel: "Salvage opportunity: [Product_ID]. CAC $[X] (need <$[target]). Current CTR [X]%. Hypothesis: [specific creative/offer angle to test]"</li>
+                            </ul>
+                        </li>
+                    </ol>
+
+                    <h4>Outputs</h4>
+                    <ul>
+                        <li><strong>Decision Tag:</strong> P2_PASS, P2_PASS_A_TIER, P2_FAIL, or P2_SALVAGE</li>
+                        <li><strong>ClickUp Status:</strong> Task moved to appropriate list/archive</li>
+                        <li><strong>Notion Data:</strong> Complete P2 metrics logged for portfolio analysis</li>
+                        <li><strong>Discord Communications:</strong> Results posted, handoffs coordinated</li>
+                        <li><strong>Portfolio Tracking:</strong> P2_PASS rate updated (should trend toward 4-6% over time)</li>
+                    </ul>
+
+                    <h4>Quality Checks</h4>
+                    <ul>
+                        <li>CAC calculation is accurate (total spend / purchases, not platform-reported)</li>
+                        <li>AOV is actual customer AOV, not platform-reported value if discrepant</li>
+                        <li>Decision strictly follows L2-05 criteria (no "almost made it" passes)</li>
+                        <li>A-Tier designation is justified by meeting ALL three stricter criteria</li>
+                        <li>Salvage designation is rare and has specific hypothesis articulated</li>
+                    </ul>
+
+                    <h4>Decision Framework for Edge Cases</h4>
+                    <p><strong>Scenario: CAC is exactly 0.5 × AOV, ROAS is 1.19 (just under 1.2 threshold)</strong></p>
+                    <p>Action: Technically P2_FAIL per canon. However, if this is on exactly $80 spend and creative momentum suggests improvement, can extend to $90-$100 before final decision. Document extension rationale.</p>
+
+                    <p><strong>Scenario: 1 purchase at $40, AOV is $80, so CAC = $40 (exactly 0.5 × AOV)</strong></p>
+                    <p>Action: Does not meet "Purchases ≥ 2" criterion, so technically should extend budget to $90-$100 to get more purchase data. If still only 1 purchase by $100, treat as P2_FAIL per "Purchases ≤ 1" rule for high AOV products.</p>
+
+                    <p><strong>Scenario: Strong P1 (CTR 2.5%), but P2 CAC deteriorated to 0.65 × AOV</strong></p>
+                    <p>Action: P2_FAIL per criterion. High P1 CTR does not override P2 economics. Post-mortem: Was there funnel/offer problem? Store CRO issue? Feed back to store builders and creative team, but still kill the product.</p>
+
+                    <h4>Time Estimate</h4>
+                    <p>15-25 minutes per product (comprehensive analysis and coordination)</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>Workflow 6: Scale to P3 (Winner Management)</summary>
+                <div class="details-content">
+                    <h4>Trigger</h4>
+                    <p>Product tagged P2_PASS or P2_PASS_A_TIER, ready for profitable scaling</p>
+
+                    <h4>Prerequisites</h4>
+                    <ul class="checklist">
+                        <li>Confirmed P2_PASS with CAC ≤ 0.5 × AOV and ROAS ≥ 1.2-1.4</li>
+                        <li>Store readiness confirmed (coordinate with P3-SB-VALIDATION or P3-SB-BRAND)</li>
+                        <li>Current P3 WIP < 3</li>
+                        <li>Cash flow check: confirm available budget for scaling (coordinate with P4-OP-INTEGRATOR if needed)</li>
+                    </ul>
+
+                    <h4>P3 Scaling Philosophy (from L2-06)</h4>
+                    <p>P3 is NOT about "spend as much as possible." P3 is about <strong>controlled, profitable scaling</strong> with constant CAC/ROAS monitoring and willingness to de-scale or kill if economics deteriorate.</p>
+
+                    <p>Three P3 tiers exist:</p>
+                    <ul>
+                        <li><strong>P3_TEST:</strong> Initial scaling experiments, maintaining CAC ≤ 0.6 × AOV, ROAS ≥ 1.2</li>
+                        <li><strong>P3_WINNER:</strong> Sustained performance (14-30 days) with CAC ≤ 0.5 × AOV, ROAS ≥ 1.3-1.5</li>
+                        <li><strong>TIER_A_WINNER:</strong> Elite sustained performance (30+ days) with CAC ≤ 0.4 × AOV, ROAS ≥ 1.5</li>
+                    </ul>
+
+                    <h4>Steps – P3_TEST Launch</h4>
+                    <ol>
+                        <li><strong>Determine Initial P3 Budget</strong>
+                            <ul>
+                                <li>Start conservatively: 2-3× daily P2 spend rate</li>
+                                <li>Example: If P2 averaged $15/day, start P3 at $30-$45/day</li>
+                                <li>Set as daily budget, not lifetime (allows flexible adjustment)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Campaign Structure</strong>
+                            <ul>
+                                <li>Option A – CBO (Campaign Budget Optimization):
+                                    <ul>
+                                        <li>Create new campaign "[Product_ID] P3 Scaling CBO"</li>
+                                        <li>Campaign budget: $[initial daily budget]</li>
+                                        <li>Create 2-3 ad sets testing different angles:
+                                            <ul>
+                                                <li>Ad Set 1: Broad (same as P1/P2)</li>
+                                                <li>Ad Set 2: Lookalike 1% (if pixel data sufficient)</li>
+                                                <li>Ad Set 3: Interest stack (if clear product category)</li>
+                                            </ul>
+                                        </li>
+                                        <li>Let CBO distribute budget based on performance</li>
+                                    </ul>
+                                </li>
+                                <li>Option B – ABO (Ad Set Budget Optimization) for more control:
+                                    <ul>
+                                        <li>Manually allocate budget across ad sets</li>
+                                        <li>Allows faster learning and budget shifts</li>
+                                        <li>More hands-on management required</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><strong>Creative Strategy</strong>
+                            <ul>
+                                <li>Start with proven P2 winners</li>
+                                <li>Request creative refresh from P2-CR (2-3 new variants with same winning angle)</li>
+                                <li>Plan creative rotation: replace lowest performer every 5-7 days with new variant</li>
+                            </ul>
+                        </li>
+                        <li><strong>Launch & Monitor Setup</strong>
+                            <ul>
+                                <li>Activate P3 campaign</li>
+                                <li>Set up daily monitoring protocol:
+                                    <ul>
+                                        <li>Triple Whale dashboard: CAC, ROAS, purchase volume</li>
+                                        <li>Check metrics against P3_TEST guardrails (CAC ≤ 0.6 × AOV, ROAS ≥ 1.2)</li>
+                                        <li>Flag any 2-day trends showing deterioration</li>
+                                    </ul>
+                                </li>
+                                <li>Update Notion Product OS:
+                                    <ul>
+                                        <li>Status: "Scaling"</li>
+                                        <li>Current Gate: "P3"</li>
+                                        <li>P3 Status: "P3_TEST"</li>
+                                        <li>P3 Start Date: [date]</li>
+                                        <li>Initial P3 Daily Budget: $[X]</li>
+                                    </ul>
+                                </li>
+                                <li>Update ClickUp: Move to "P3 Scaling" list, set recurring check-in tasks (every 3 days)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Incremental Scaling Protocol</strong>
+                            <p>If CAC and ROAS remain healthy after 3-5 days:</p>
+                            <ul>
+                                <li>Increase budget by 20-30%</li>
+                                <li>Example: $45/day → $55-60/day</li>
+                                <li>Wait 3-5 days, reassess</li>
+                                <li>Repeat until CAC starts to deteriorate OR ROAS drops below threshold</li>
+                            </ul>
+                            <p><strong>Scaling Ceiling:</strong> When CAC hits 0.55-0.6 × AOV or ROAS dips to 1.2-1.25, STOP increasing. Hold at that budget and monitor for stabilization.</p>
+                        </li>
+                        <li><strong>P3_WINNER Promotion Criteria</strong>
+                            <p>After 14-30 days at baseline P3 budget ladder, if ALL are true:</p>
+                            <ul>
+                                <li>CAC ≤ 0.5 × AOV (back to P2 requirement or better)</li>
+                                <li>ROAS ≥ 1.3-1.5</li>
+                                <li>Budgets have scaled 2-3× vs P2 level without breaking economics</li>
+                                <li>Ops can handle fulfillment volume</li>
+                            </ul>
+                            <p>Then:</p>
+                            <ul>
+                                <li>Tag as <strong>P3_WINNER</strong></li>
+                                <li>Coordinate brand/niche store build with P3-SB-BRAND (if not already done)</li>
+                                <li>Consider multi-channel expansion (TikTok + Meta, add Google Shopping)</li>
+                                <li>Increase creative refresh cadence (new variants every 3-5 days)</li>
+                            </ul>
+                        </li>
